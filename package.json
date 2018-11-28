@@ -1,6 +1,6 @@
 {
   "name": "o2system-espresso",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "O2System Javascript Framework",
   "main": "dist/espresso.js",
   "scripts": {
