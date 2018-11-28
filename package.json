@@ -4,7 +4,7 @@
   "description": "O2System Javascript Framework",
   "main": "dist/espresso.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,8 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-eslint": "^5.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
   }
 }
