@@ -49,20 +49,20 @@ O2System.Input = class {
             queryParams = this.getParams;
         }
 
-        var queryString = '?';
-        jQuery.each(queryObject, function (key, value) {
+        let queryString = '?';
+        forEach(function (value, index) {
             if (value !== 'undefined' && value !== '' && key !== '') {
                 queryString = queryString + key + '=' + value + '&';
             }
-        });
+        }, queryParams);
 
         return queryString.substring(0, (queryString.length - 1));
     }
 
     sanitize(string) {
-        var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+        let tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
 
-        var tagOrComment = new RegExp(
+        let tagOrComment = new RegExp(
             '<(?:'
             // Comment body.
             + '!--(?:(?:-*[^->])*--+|-?)'
@@ -75,7 +75,7 @@ O2System.Input = class {
             + ')>',
             'gi');
 
-        var oldString;
+        let oldString;
         do {
             oldString = string;
             string = string.replace(tagOrComment, '');
@@ -162,17 +162,17 @@ O2System.Uri = class {
  */
 O2System.Validate = class {
     url(string) {
-        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        let regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
         return regexp.test(string);
     }
 
     domain(string) {
-        var regexp = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/;
+        let regexp = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/;
         return regexp.test(string);
     }
 
     alphaNumeric(string) {
-        var regexp = /^([a-zA-Z0-9-]+)$/;
+        let regexp = /^([a-zA-Z0-9-]+)$/;
         return regexp.test(string);
     }
 
