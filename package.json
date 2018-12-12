@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "O2System Javascript Framework",
   "homepage": "https://espresso.o2system.id",
-  "main": "./dist/o2system-espresso.js",
+  "main": "./src/espresso.js",
   "author": {
     "name": "Steeven Andrian Salim",
     "email": "steeven@o2system.id",
@@ -27,5 +27,11 @@
     "o2system",
     "jQuery",
     "plugin"
-  ]
+  ],
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
+  }
 }
