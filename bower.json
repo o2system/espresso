@@ -1,0 +1,11 @@
+{
+    "name": "o2system-espresso",
+    "version": "1.0.0",
+    "main": [
+        "dist/o2system-espresso.js"
+    ],
+    "ignore": [],
+    "dependencies": {
+        "jquery": ">= 3.3.1"
+    }
+}

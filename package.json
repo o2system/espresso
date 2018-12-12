@@ -1,32 +1,31 @@
 {
   "name": "o2system-espresso",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "O2System Javascript Framework",
-  "main": "dist/espresso.js",
-  "scripts": {
-    "build": "gulp"
+  "homepage": "https://espresso.o2system.id",
+  "main": "./dist/o2system-espresso.js",
+  "author": {
+    "name": "Steeven Andrian Salim",
+    "email": "steeven@o2system.id",
+    "url": "https://steevenz.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/o2system/espresso/issues",
+    "email": "steeven@o2system.id"
+  },
+  "dependencies": {
+    "npm": "^6.4.1",
+    "jquery": ">= 3.3.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/o2system/espresso.git"
+    "url": "git://git@github.com/o2system/espresso.git"
   },
-  "author": "O2System",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/o2system/espresso/issues"
-  },
-  "homepage": "https://github.com/o2system/espresso#readme",
-  "dependencies": {
-    "jquery": "^3.3.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^5.0.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1"
-  }
+  "keywords": [
+    "javascript",
+    "o2system",
+    "jQuery",
+    "plugin"
+  ]
 }
