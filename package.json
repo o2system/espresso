@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "O2System Javascript Framework",
   "homepage": "https://espresso.o2system.id",
-  "main": "./src/espresso.js",
+  "main": "./dist/espresso.js",
   "author": {
     "name": "Steeven Andrian Salim",
     "email": "steeven@o2system.id",
