@@ -44,3 +44,5 @@ class Uri {
         return null;
     }
 }
+
+module.exports = Uri;

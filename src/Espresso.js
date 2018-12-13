@@ -9,9 +9,9 @@
  */
 // ------------------------------------------------------------------------
 
-let UrlHelper = require('./Helpers/Url');
-let Input = require('./Kernel/Input');
-let ServerRequest = require('./Kernel/Http/Message/ServerRequest');
+import UrlHelper  from './Helpers/Url';
+import Input  from './Kernel/Input';
+import ServerRequest  from './Kernel/Http/Message/ServerRequest';
 
 // ------------------------------------------------------------------------
 

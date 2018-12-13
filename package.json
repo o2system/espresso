@@ -8,14 +8,24 @@
   "contributors": [
     "Nur Wachid <nur.wachid@o2system.id> (https://o2system.id/team/profile/nur-wachid)"
   ],
+  "scripts": {
+    "dev": "webpack --mode development --module-bind js=babel-loader",
+    "build": "webpack --mode production --module-bind js=babel-loader"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/o2system/espresso/issues",
     "email": "steeven@o2system.id"
   },
   "dependencies": {
-    "npm": "^6.4.1",
     "jquery": ">= 3.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
   },
   "repository": {
     "type": "git",
