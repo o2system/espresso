@@ -4,16 +4,21 @@
   "description": "O2System Javascript Framework",
   "homepage": "https://espresso.o2system.id",
   "main": "./dist/espresso.js",
+  "browser": "./dist/espresso.min.js",
   "author": "Steeven Andrian Salim <steeven@o2system.id> (https://o2system.id/team/profile/steeven)",
   "contributors": [
     "Nur Wachid <nur.wachid@o2system.id> (https://o2system.id/team/profile/nur-wachid)"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com/o2system/espresso.git"
+  },
   "scripts": {
     "start": "webpack-dev-server --mode development --watch --open",
     "dev": "webpack --mode development --module-bind js=babel-loader",
     "prod": "webpack --mode production --module-bind js=babel-loader"
   },
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
@@ -27,5 +32,8 @@
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "mustache": "^3.0.1"
   }
 }

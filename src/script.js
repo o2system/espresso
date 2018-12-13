@@ -1,31 +1,17 @@
-import './style.css'
-// const arr = [1, 2, 3];
-// const iAmJavascriptES6 = () => console.log(...arr);
-import Espresso from './Espresso'
-import { tambah, kali } from './sample/math'
-import {sayHello} from './sample/hello';
+/**
+ * This file is part of the O2System Espresso Javascript Framework package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author         Steeve Andrian Salim
+ * @copyright      Copyright (c) Steeve Andrian Salim
+ */
+// ------------------------------------------------------------------------
 
+import Espresso from './Espresso';
 
-// const espresso 
-
-// console.log("hello, world");
-
-// console.log(tambah(10,20))
-// console.log(kali(3,4))
-
-
-// const resultGreeting = document.getElementById('resultGreeting');
-// const resultSum = document.getElementById('resultSum');
-// const resultProduct = document.getElementById('resultProduct');
-
-
-// resultGreeting.textContent = sayHello('Nice to see you! ');
-// resultSum.textContent = `The sum of ${a} and ${b} is ${sum(a, b)}. `;
-// resultProduct.textContent = `The product of ${a} and ${b} is ${product(a, b)}. `;
-
+/**
+ * Espresso Object
+ */
 const espresso = new Espresso();
-console.log(espresso);
-
-const coffe = require('./Espresso');
-console.log(coffe);
-

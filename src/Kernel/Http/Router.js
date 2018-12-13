@@ -9,4 +9,23 @@
  */
 // ------------------------------------------------------------------------
 
-global.espresso = new(require('./Espresso'))();
+const Uri = require('./Message/Uri');
+
+/**
+ * Class Router
+ * 
+ * @package Kernel/Http
+ */
+class Router {
+    construct() {
+        this.uri = new Uri();
+    }
+
+    parseRequest(uriRequest) {
+        if (uriRequest instanceof Uri) {
+            this.uri = uriRequest;
+        }
+    }
+}
+
+module.exports = Router;

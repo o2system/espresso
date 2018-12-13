@@ -10,7 +10,7 @@
  */
 // ------------------------------------------------------------------------
 
-const UrlHelper = require('./Helpers/Url');
+const EventListener = require('./Html/EventListener');
 const Input = require('./Kernel/Input');
 const ServerRequest = require('./Kernel/Http/Message/ServerRequest');
 
@@ -21,11 +21,16 @@ const ServerRequest = require('./Kernel/Http/Message/ServerRequest');
  */
 class Espresso {
     constructor() {
-        this.helper = new Object();
-        this.helper.url = new UrlHelper();
-
+        this.listener = new EventListener();
         this.input = new Input();
         this.serverRequest = new ServerRequest();
+
+        /**
+         * Initialize EventListener
+         */
+        this.listener.loadPage('a[data-action="load-page"]');
+        this.listener.loadData('a[data-action="load-data"]');
+        this.listener.loadFrame('a[data-action="load-frame"]');
     }
 }
 
