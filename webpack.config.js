@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const appHtmlTitle = 'Webpack Boilerplate';
 
 const config = {
+	mode: wacth
 	entry: { main: './src/script.js' },
 	output: {
 		path: path.resolve(__dirname, 'dist'),
