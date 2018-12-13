@@ -9,39 +9,97 @@
  */
 // ------------------------------------------------------------------------
 
+const Segments = require('./Uri/Segments');
+
 /**
  * Class Uri
  * 
  * @package Kernel/Http/Message
+ * 
+ * @todo add domain, subdomain, tld
  */
 class Uri {
     constructor() {
-        this.string = window.location.pathname.substr(1);
-        this.segments = this.string.split('/');
+        this.scheme = window.location.protocol;
+        this.segments = new Segments();
+        this.host = window.location.hostname;
+        this.port = window.location.port;
+        this.hash = window.location.hash;
+
+        // Query as Object
+        this.query = (function (a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i) {
+                var p = a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
     }
 
-    get string() {
-        return this.string;
+    getScheme() {
+        return this.scheme;
     }
 
-    set string(uriString) {
-        this.string = uriString;
-    }
-
-    get segments() {
+    getSegments() {
         return this.segments;
     }
 
-    set segments(uriSegments) {
-        this.segments = uriSegments;
+    withSegments(segments) {
+        if(Array.isArray(segments)){
+            return this.segments.withParts(segments);
+        }
     }
 
-    segment(index) {
-        if (this.segments.hasOwnProperty(index - 1)) {
-            return this.segments[index - 1];
+    getHost() {
+        return this.host;
+    }
+
+    getPort() {
+        return this.port;
+    }
+
+    getHash() {
+        return this.hash;
+    }
+
+    withHash(hash) {
+        this.hash = hash;
+    }
+
+    getQuery() {
+        return this.query;
+    }
+
+    withQuery(params) {
+        if(params instanceof Object) {
+            this.query = Object.assign(this.query, params);
+        }
+    } 
+
+    buildQuery(params) {
+        var uriComponent = encodeURIComponent;
+        var query = Object.keys(params)
+            .map(key => uriComponent(key) + '=' + uriComponent(params[key]))
+            .join('&');
+    }
+
+    __toString() {
+        let uriString = this.scheme + '//' + this.hostname + (this.port ? ':' + this.port : '') + this.segments.__toString();
+
+        if(this.query.length > 0) {
+            uriString = uriString + this.buildQuery(this.query);
         }
 
-        return null;
+        if(this.hash) {
+            uriString = uriString + this.hash;
+        }
+
+        return uriString;
     }
 }
 

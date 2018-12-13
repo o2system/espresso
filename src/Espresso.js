@@ -10,9 +10,9 @@
  */
 // ------------------------------------------------------------------------
 
-let UrlHelper = require('./Helpers/Url');
-let Input = require('./Kernel/Input');
-let ServerRequest = require('./Kernel/Http/Message/ServerRequest');
+const UrlHelper = require('./Helpers/Url');
+const Input = require('./Kernel/Input');
+const ServerRequest = require('./Kernel/Http/Message/ServerRequest');
 
 // ------------------------------------------------------------------------
 

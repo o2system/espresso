@@ -9,6 +9,8 @@
  */
 // ------------------------------------------------------------------------
 
+const Uri = require('./Uri');
+
 /**
  * Class ServerRequest
  * 
@@ -16,8 +18,13 @@
  */
 class ServerRequest {
     constructor() {
+        this.uri = new Uri();
         this.queryParams = new URLSearchParams(window.location.search);
         this.queryString = window.location.search.substring(1);
+    }
+
+    getUri() {
+        return this.uri;
     }
 
     getQueryString() {
