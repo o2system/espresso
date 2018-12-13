@@ -1,14 +1,13 @@
 {
-  "name": "o2system-espresso",
+  "name": "@o2system/espresso",
   "version": "1.0.0",
   "description": "O2System Javascript Framework",
   "homepage": "https://espresso.o2system.id",
   "main": "./dist/espresso.js",
-  "author": {
-    "name": "Steeven Andrian Salim",
-    "email": "steeven@o2system.id",
-    "url": "https://steevenz.com"
-  },
+  "author": "Steeven Andrian Salim <steeven@o2system.id> (https://o2system.id/team/profile/steeven)",
+  "contributors": [
+    "Nur Wachid <nur.wachid@o2system.id> (https://o2system.id/team/profile/nur-wachid)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/o2system/espresso/issues",
@@ -28,11 +27,5 @@
     "espresso",
     "jQuery",
     "plugin"
-  ],
-  "devDependencies": {
-    "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1"
-  }
+  ]
 }
