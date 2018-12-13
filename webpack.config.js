@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/Espresso.js',
+  // entry: './src/Espresso.js',
+  entry: {
+    main: './src/Espresso.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'espresso.js'

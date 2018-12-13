@@ -15,14 +15,12 @@ import ServerRequest  from './Kernel/Http/Message/ServerRequest';
 
 // ------------------------------------------------------------------------
 
-class Espresso {
+export default class Espresso {
     constructor() {
         this.helper = new Object();
-        this.helper.url = new UrlHelper();
+        this.helper.url = UrlHelper;
 
-        this.input = new Input();
-        this.serverRequest = new ServerRequest();
+        this.input = Input;
+        this.serverRequest = ServerRequest;
     }
 }
-
-module.exports = Espresso;
