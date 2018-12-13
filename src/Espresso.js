@@ -1,3 +1,4 @@
+"use strict"
 /**
  * This file is part of the O2System Espresso Javascript Framework package.
  *
@@ -9,18 +10,23 @@
  */
 // ------------------------------------------------------------------------
 
-import UrlHelper  from './Helpers/Url';
-import Input  from './Kernel/Input';
-import ServerRequest  from './Kernel/Http/Message/ServerRequest';
+let UrlHelper = require('./Helpers/Url');
+let Input = require('./Kernel/Input');
+let ServerRequest = require('./Kernel/Http/Message/ServerRequest');
 
 // ------------------------------------------------------------------------
 
-export default class Espresso {
+/**
+ * Class Espresso
+ */
+class Espresso {
     constructor() {
         this.helper = new Object();
-        this.helper.url = UrlHelper;
+        this.helper.url = new UrlHelper();
 
-        this.input = Input;
-        this.serverRequest = ServerRequest;
+        this.input = new Input();
+        this.serverRequest = new ServerRequest();
     }
 }
+
+module.exports = Espresso;

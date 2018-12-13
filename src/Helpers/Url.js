@@ -69,3 +69,5 @@ class Url {
             .join('&');
     }
 }
+
+module.exports = Url;
