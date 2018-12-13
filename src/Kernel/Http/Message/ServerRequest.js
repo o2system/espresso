@@ -32,3 +32,5 @@ class ServerRequest {
         return window.location.hash;
     }
 }
+
+module.exports = ServerRequest;

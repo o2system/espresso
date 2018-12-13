@@ -37,3 +37,5 @@ class Validation {
         return false;
     }
 }
+
+module.exports = Validation;
