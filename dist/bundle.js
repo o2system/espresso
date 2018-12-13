@@ -81,21 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/script.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./node_modules/webpack/buildin/global.js":
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("var g; // This works in non-strict mode\n\ng = function () {\n  return this;\n}();\n\ntry {\n  // This works if eval is allowed (see CSP)\n  g = g || new Function(\"return this\")();\n} catch (e) {\n  // This works if the window reference is available\n  if (typeof window === \"object\") g = window;\n} // g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\n\nmodule.exports = g;\n\n//# sourceURL=webpack:///(webpack)/buildin/global.js?");
-
-/***/ }),
 
 /***/ "./src/Espresso.js":
 /*!*************************!*\
@@ -136,9 +125,20 @@ eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instan
   !*** ./src/Kernel/Http/Message/Uri.js ***!
   \****************************************/
 /*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  return Constructor;\n}\n/**\n * This file is part of the O2System Espresso Javascript Framework package.\n *\n * For the full copyright and license information, please view the LICENSE\n * file that was distributed with this source code.\n *\n * @author         Steeve Andrian Salim\n * @copyright      Copyright (c) Steeve Andrian Salim\n */\n// ------------------------------------------------------------------------\n\n\nvar Segments = __webpack_require__(/*! ./Uri/Segments */ \"./src/Kernel/Http/Message/Uri/Segments.js\");\n/**\n * Class Uri\n * \n * @package Kernel/Http/Message\n * \n * @todo add domain, subdomain, tld\n */\n\n\nvar Uri =\n/*#__PURE__*/\nfunction () {\n  function Uri() {\n    _classCallCheck(this, Uri);\n\n    this.scheme = window.location.protocol;\n    this.segments = new Segments();\n    this.host = window.location.hostname;\n    this.port = window.location.port;\n    this.hash = window.location.hash; // Query as Object\n\n    this.query = function (a) {\n      if (a == \"\") return {};\n      var b = {};\n\n      for (var i = 0; i < a.length; ++i) {\n        var p = a[i].split('=', 2);\n        if (p.length == 1) b[p[0]] = \"\";else b[p[0]] = decodeURIComponent(p[1].replace(/\\+/g, \" \"));\n      }\n\n      return b;\n    }(window.location.search.substr(1).split('&'));\n  }\n\n  _createClass(Uri, [{\n    key: \"getScheme\",\n    value: function getScheme() {\n      return this.scheme;\n    }\n  }, {\n    key: \"getSegments\",\n    value: function getSegments() {\n      return this.segments;\n    }\n  }, {\n    key: \"withSegments\",\n    value: function withSegments(segments) {\n      if (Array.isArray(segments)) {\n        return this.segments.withParts(segments);\n      }\n    }\n  }, {\n    key: \"getHost\",\n    value: function getHost() {\n      return this.host;\n    }\n  }, {\n    key: \"getPort\",\n    value: function getPort() {\n      return this.port;\n    }\n  }, {\n    key: \"getHash\",\n    value: function getHash() {\n      return this.hash;\n    }\n  }, {\n    key: \"withHash\",\n    value: function withHash(hash) {\n      this.hash = hash;\n    }\n  }, {\n    key: \"getQuery\",\n    value: function getQuery() {\n      return this.query;\n    }\n  }, {\n    key: \"withQuery\",\n    value: function withQuery(params) {\n      if (params instanceof Object) {\n        this.query = Object.assign(this.query, params);\n      }\n    }\n  }, {\n    key: \"buildQuery\",\n    value: function buildQuery(params) {\n      var uriComponent = encodeURIComponent;\n      var query = Object.keys(params).map(function (key) {\n        return uriComponent(key) + '=' + uriComponent(params[key]);\n      }).join('&');\n    }\n  }, {\n    key: \"__toString\",\n    value: function __toString() {\n      var uriString = this.scheme + '//' + this.hostname + (this.port ? ':' + this.port : '') + this.segments.__toString();\n\n      if (this.query.length > 0) {\n        uriString = uriString + this.buildQuery(this.query);\n      }\n\n      if (this.hash) {\n        uriString = uriString + this.hash;\n      }\n\n      return uriString;\n    }\n  }]);\n\n  return Uri;\n}();\n\nmodule.exports = Uri;\n\n//# sourceURL=webpack:///./src/Kernel/Http/Message/Uri.js?");
+
+/***/ }),
+
+/***/ "./src/Kernel/Http/Message/Uri/Segments.js":
+/*!*************************************************!*\
+  !*** ./src/Kernel/Http/Message/Uri/Segments.js ***!
+  \*************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  return Constructor;\n}\n/**\n * This file is part of the O2System Espresso Javascript Framework package.\n *\n * For the full copyright and license information, please view the LICENSE\n * file that was distributed with this source code.\n *\n * @author         Steeve Andrian Salim\n * @copyright      Copyright (c) Steeve Andrian Salim\n */\n// ------------------------------------------------------------------------\n\n/**\n * Class Uri\n * \n * @package Kernel/Http/Message\n */\n\n\nvar Uri =\n/*#__PURE__*/\nfunction () {\n  function Uri() {\n    _classCallCheck(this, Uri);\n\n    this.string = window.location.pathname.substr(1);\n    this.segments = this.string.split('/');\n  }\n\n  _createClass(Uri, [{\n    key: \"segment\",\n    value: function segment(index) {\n      if (this.segments.hasOwnProperty(index - 1)) {\n        return this.segments[index - 1];\n      }\n\n      return null;\n    }\n  }, {\n    key: \"string\",\n    get: function get() {\n      return this.string;\n    },\n    set: function set(uriString) {\n      this.string = uriString;\n    }\n  }, {\n    key: \"segments\",\n    get: function get() {\n      return this.segments;\n    },\n    set: function set(uriSegments) {\n      this.segments = uriSegments;\n    }\n  }]);\n\n  return Uri;\n}();\n\nmodule.exports = Uri;\n\n//# sourceURL=webpack:///./src/Kernel/Http/Message/Uri.js?");
+eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  return Constructor;\n}\n/**\n * This file is part of the O2System Espresso Javascript Framework package.\n *\n * For the full copyright and license information, please view the LICENSE\n * file that was distributed with this source code.\n *\n * @author         Steeve Andrian Salim\n * @copyright      Copyright (c) Steeve Andrian Salim\n */\n// ------------------------------------------------------------------------\n\n/**\n * Class Segments\n * \n * @package Kernel/Http/Message/Uri\n */\n\n\nvar Segments =\n/*#__PURE__*/\nfunction () {\n  function Segments() {\n    _classCallCheck(this, Segments);\n\n    this.string = window.location.pathname.substr(1);\n    this.parts = this.string.split('/');\n  }\n\n  _createClass(Segments, [{\n    key: \"getString\",\n    value: function getString() {\n      return this.string;\n    }\n  }, {\n    key: \"withString\",\n    value: function withString(string) {\n      this.string = string;\n    }\n  }, {\n    key: \"getParts\",\n    value: function getParts() {\n      return this.parts;\n    }\n  }, {\n    key: \"withParts\",\n    value: function withParts(parts) {\n      if (Array.isArray(parts)) {\n        this.parts.concat(parts);\n      }\n    }\n  }, {\n    key: \"setParts\",\n    value: function setParts(parts) {\n      this.parts = parts;\n    }\n  }, {\n    key: \"getPart\",\n    value: function getPart(index) {\n      if (this.parts.hasOwnProperty(index - 1)) {\n        return this.parts[index - 1];\n      }\n\n      return null;\n    }\n  }, {\n    key: \"withPart\",\n    value: function withPart(part) {\n      this.parts.push(part);\n    }\n  }, {\n    key: \"hasPart\",\n    value: function hasPart(part) {\n      var result = this.parts.find(part);\n\n      if (typeof result === 'undefined') {\n        return false;\n      }\n\n      return true;\n    }\n  }, {\n    key: \"filterPart\",\n    value: function filterPart(part) {\n      return part.replace(/[\\W_-]/g, '').replace(/_+/g, '-').replace(/-+/g, '-');\n    }\n  }, {\n    key: \"getTotalParts\",\n    value: function getTotalParts() {\n      return this.parts.length;\n    }\n  }, {\n    key: \"__toString\",\n    value: function __toString() {\n      if (this.parts.length > 0) {\n        return this.parts.join('/');\n      }\n\n      return '';\n    }\n  }]);\n\n  return Segments;\n}();\n\nmodule.exports = Segments;\n\n//# sourceURL=webpack:///./src/Kernel/Http/Message/Uri/Segments.js?");
 
 /***/ }),
 
@@ -153,14 +153,50 @@ eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instan
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./src/sample/hello.js":
+/*!*****************************!*\
+  !*** ./src/sample/hello.js ***!
+  \*****************************/
+/*! exports provided: sayHello */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("/* WEBPACK VAR INJECTION */(function(global) {/**\n * This file is part of the O2System Espresso Javascript Framework package.\n *\n * For the full copyright and license information, please view the LICENSE\n * file that was distributed with this source code.\n *\n * @author         Steeve Andrian Salim\n * @copyright      Copyright (c) Steeve Andrian Salim\n */\n// ------------------------------------------------------------------------\nglobal.espresso = new (__webpack_require__(/*! ./Espresso */ \"./src/Espresso.js\"))();\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/global.js */ \"./node_modules/webpack/buildin/global.js\")))\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sayHello\", function() { return sayHello; });\nvar sayHello = function sayHello(greeting) {\n  var currentHour = new Date().getHours();\n  var timeGreeting = 'Good morning!';\n\n  if (currentHour >= 12 && currentHour <= 17) {\n    timeGreeting = 'Good afternoon!';\n  } else if (currentHour >= 17) {\n    timeGreeting = 'Good evening!';\n  }\n\n  return \"\".concat(timeGreeting, \" \").concat(greeting);\n};\n\n\n\n//# sourceURL=webpack:///./src/sample/hello.js?");
+
+/***/ }),
+
+/***/ "./src/sample/math.js":
+/*!****************************!*\
+  !*** ./src/sample/math.js ***!
+  \****************************/
+/*! exports provided: tambah, kali */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"tambah\", function() { return tambah; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"kali\", function() { return kali; });\nvar tambah = function tambah(a, b) {\n  return a + b;\n};\n\nvar kali = function kali(a, b) {\n  return a * b;\n};\n\n\n\n//# sourceURL=webpack:///./src/sample/math.js?");
+
+/***/ }),
+
+/***/ "./src/script.js":
+/*!***********************!*\
+  !*** ./src/script.js ***!
+  \***********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Espresso__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Espresso */ \"./src/Espresso.js\");\n/* harmony import */ var _Espresso__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Espresso__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _sample_math__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sample/math */ \"./src/sample/math.js\");\n/* harmony import */ var _sample_hello__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sample/hello */ \"./src/sample/hello.js\");\n // const arr = [1, 2, 3];\n// const iAmJavascriptES6 = () => console.log(...arr);\n\n\n\n\nconsole.log(\"hello, world\");\nconsole.log(Object(_sample_math__WEBPACK_IMPORTED_MODULE_2__[\"tambah\"])(10, 20));\nconsole.log(Object(_sample_math__WEBPACK_IMPORTED_MODULE_2__[\"kali\"])(3, 4));\nvar resultGreeting = document.getElementById('resultGreeting');\nvar resultSum = document.getElementById('resultSum');\nvar resultProduct = document.getElementById('resultProduct');\nresultGreeting.textContent = Object(_sample_hello__WEBPACK_IMPORTED_MODULE_3__[\"sayHello\"])('Nice to see you! ');\nresultSum.textContent = \"The sum of \".concat(a, \" and \").concat(b, \" is \").concat(sum(a, b), \". \");\nresultProduct.textContent = \"The product of \".concat(a, \" and \").concat(b, \" is \").concat(product(a, b), \". \");\nespresso = new _Espresso__WEBPACK_IMPORTED_MODULE_1___default.a();\n\n//# sourceURL=webpack:///./src/script.js?");
+
+/***/ }),
+
+/***/ "./src/style.css":
+/*!***********************!*\
+  !*** ./src/style.css ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/style.css?");
 
 /***/ })
 

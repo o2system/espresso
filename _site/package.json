@@ -1,0 +1,31 @@
+{
+  "name": "o2system-espresso",
+  "version": "1.0.6",
+  "description": "O2System Javascript Framework",
+  "homepage": "https://espresso.o2system.id",
+  "main": "./dist/espresso.js",
+  "author": "Steeven Andrian Salim <steeven@o2system.id> (https://o2system.id/team/profile/steeven)",
+  "contributors": [
+    "Nur Wachid <nur.wachid@o2system.id> (https://o2system.id/team/profile/nur-wachid)"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --mode development --watch --open",
+    "dev": "webpack --mode development --module-bind js=babel-loader",
+    "prod": "webpack --mode production --module-bind js=babel-loader"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^2.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
