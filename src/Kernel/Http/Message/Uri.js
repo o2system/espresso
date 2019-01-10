@@ -9,7 +9,7 @@
  */
 // ------------------------------------------------------------------------
 
-const Segments = require('./Uri/Segments');
+import Segments from './Uri/Segments';
 
 /**
  * Class Uri
@@ -103,4 +103,4 @@ class Uri {
     }
 }
 
-module.exports = Uri;
+export default Uri;

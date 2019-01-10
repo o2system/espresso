@@ -10,9 +10,9 @@
  */
 // ------------------------------------------------------------------------
 
-const EventListener = require('./Html/EventListener');
-const Input = require('./Kernel/Input');
-const ServerRequest = require('./Kernel/Http/Message/ServerRequest');
+import EventListener from './Html/EventListener';
+import Input from './Kernel/Input';
+import ServerRequest from './Kernel/Http/Message/ServerRequest';
 
 // ------------------------------------------------------------------------
 
@@ -34,4 +34,4 @@ class Espresso {
     }
 }
 
-module.exports = Espresso;
+export default Espresso;

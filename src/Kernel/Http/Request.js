@@ -35,4 +35,4 @@ class Request {
     }
 }
 
-module.exports = Request;
+export default Request;

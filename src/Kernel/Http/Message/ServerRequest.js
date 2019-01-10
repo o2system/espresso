@@ -9,7 +9,7 @@
  */
 // ------------------------------------------------------------------------
 
-const Uri = require('./Uri');
+import Uri  from './Uri';
 
 /**
  * Class ServerRequest
@@ -40,4 +40,4 @@ class ServerRequest {
     }
 }
 
-module.exports = ServerRequest;
+export default ServerRequest;

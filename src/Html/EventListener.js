@@ -9,8 +9,8 @@
  */
 // ------------------------------------------------------------------------
 
-const Request = require('../Kernel/Http/Request');
-const Mustache = require('mustache');
+import Request from '../Kernel/Http/Request';
+import Mustache from 'mustache';
 
 /**
  * Class EventListener
@@ -127,4 +127,4 @@ class EventListener {
     }
 }
 
-module.exports = EventListener;
+export default EventListener;

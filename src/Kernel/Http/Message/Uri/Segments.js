@@ -81,4 +81,4 @@ class Segments {
     }
 }
 
-module.exports = Segments;
+export default Segments;
