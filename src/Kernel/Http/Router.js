@@ -9,14 +9,14 @@
  */
 // ------------------------------------------------------------------------
 
-const Uri = require('./Message/Uri');
+import Uri from "./Message/Uri";
 
 /**
  * Class Router
  * 
  * @package Kernel/Http
  */
-class Router {
+export default class Router {
     construct() {
         this.uri = new Uri();
     }
@@ -27,5 +27,3 @@ class Router {
         }
     }
 }
-
-export default Router;

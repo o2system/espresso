@@ -14,7 +14,7 @@
  * 
  * @package Kernel/Http
  */
-class Request {
+export default class Request {
     CORS(url, method) {
         method = typeof method === 'undefined' ? 'GET' : method;
         const xhr = new XMLHttpRequest();
@@ -34,5 +34,3 @@ class Request {
         return xhr;
     }
 }
-
-export default Request;

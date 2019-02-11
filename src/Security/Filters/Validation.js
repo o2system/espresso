@@ -14,7 +14,7 @@
  * 
  * @package Security/Filters
  */
-class Validation {
+export default class Validation {
     url(string) {
         let regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
         return regexp.test(string);
@@ -37,5 +37,3 @@ class Validation {
         return false;
     }
 }
-
-module.exports = Validation;

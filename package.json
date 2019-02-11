@@ -3,8 +3,7 @@
   "version": "1.1.0",
   "description": "O2System Javascript Framework",
   "homepage": "https://espresso.o2system.id",
-  "main": "./dist/espresso.js",
-  "browser": "./dist/espresso.min.js",
+  "main": "src/main.js",
   "author": "Steeven Andrian Salim <steeven@o2system.id> (https://o2system.id/team/profile/steeven)",
   "contributors": [
     "Nur Wachid <nur.wachid@o2system.id> (https://o2system.id/team/profile/nur-wachid)"

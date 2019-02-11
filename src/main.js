@@ -11,7 +11,9 @@
 
 import Espresso from './Espresso';
 
+let espresso = window.espresso = new Espresso();
+
 /**
  * Espresso Object
  */
-const espresso = new Espresso();
+export default espresso;

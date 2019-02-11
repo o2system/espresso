@@ -18,7 +18,7 @@ import Segments from './Uri/Segments';
  * 
  * @todo add domain, subdomain, tld
  */
-class Uri {
+export default class Uri {
     constructor() {
         this.scheme = window.location.protocol;
         this.segments = new Segments();
@@ -45,22 +45,58 @@ class Uri {
         return this.scheme;
     }
 
+    setSegments(segments) {
+        if(Array.isArray(segments)) {
+            this.segments = this.segments.setParts(segments);
+        }
+
+        return this;
+    }
+
     getSegments() {
         return this.segments;
     }
 
     withSegments(segments) {
-        if(Array.isArray(segments)){
-            return this.segments.withParts(segments);
+        let uri = new Uri();
+
+        if(Array.isArray(segments)) {
+            uri.segments = uri.segments.withParts(segments);
         }
+
+        return uri;
+    }
+
+    setHost(host) {
+        if(typeof host == "string") {
+            this.host = host;
+        }
+
+        return this;
     }
 
     getHost() {
         return this.host;
     }
 
+    setPort(port) {
+        if(isNaN(port)) {
+            this.port = port;
+        }
+
+        return this;
+    }
+
     getPort() {
         return this.port;
+    }
+
+    setHash(hash) {
+        if(typeof hash == "string") {
+            this.hash = hash;
+        }
+
+        return this;
     }
 
     getHash() {
@@ -68,18 +104,44 @@ class Uri {
     }
 
     withHash(hash) {
-        this.hash = hash;
+        let uri = new Uri();
+
+        if(typeof hash == "string") {
+            uri.hash = hash;
+        }
+
+        return uri;
+    }
+
+    setQuery(query) {
+        if(query instanceof Object) {
+            this.query = query;
+        }
+
+        return this;
     }
 
     getQuery() {
         return this.query;
     }
 
-    withQuery(params) {
-        if(params instanceof Object) {
-            this.query = Object.assign(this.query, params);
+    addQuery(key, value) {
+        if(typeof key != "undefined" && typeof value != "undefined") {
+            this.query[key] = value;
         }
-    } 
+        
+        return this;
+    }
+
+    withQuery(query) {
+        let uri = new Uri();
+        
+        if(query instanceof Object) {
+            uri.query = query;
+        }
+        
+        return uri;
+    }
 
     buildQuery(params) {
         var uriComponent = encodeURIComponent;
@@ -89,7 +151,7 @@ class Uri {
     }
 
     __toString() {
-        let uriString = this.scheme + '//' + this.hostname + (this.port ? ':' + this.port : '') + this.segments.__toString();
+        let uriString = this.scheme + '//' + this.host + (this.port ? ':' + this.port : '') + this.segments.__toString();
 
         if(this.query.length > 0) {
             uriString = uriString + this.buildQuery(this.query);
@@ -102,5 +164,3 @@ class Uri {
         return uriString;
     }
 }
-
-export default Uri;

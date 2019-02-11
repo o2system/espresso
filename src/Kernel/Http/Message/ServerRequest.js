@@ -16,7 +16,7 @@ import Uri  from './Uri';
  * 
  * @package Kernel/Http/Message
  */
-class ServerRequest {
+export default class ServerRequest {
     constructor() {
         this.uri = new Uri();
         this.queryParams = new URLSearchParams(window.location.search);
@@ -39,5 +39,3 @@ class ServerRequest {
         return window.location.hash;
     }
 }
-
-export default ServerRequest;

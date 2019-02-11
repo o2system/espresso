@@ -17,7 +17,7 @@ import Mustache from 'mustache';
  * 
  * @package Html
  */
-class EventListener {
+export default class EventListener {
     loadFrame(selectors) {
         const buttons = document.querySelectorAll(selectors);
 
@@ -126,5 +126,3 @@ class EventListener {
         }
     }
 }
-
-export default EventListener;

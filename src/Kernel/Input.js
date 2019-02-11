@@ -14,7 +14,7 @@
  * 
  * @package Kernel/Http
  */
-class Input {
+export default class Input {
     get(name) {
         name = name.replace(/[\[\]]/g, '\\$&');
         var url = window.location.href;
@@ -58,5 +58,3 @@ class Input {
         });
     }
 }
-
-export default Input;

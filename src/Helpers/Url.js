@@ -9,14 +9,14 @@
  */
 // ------------------------------------------------------------------------
 
-const Uri = require('../Kernel/Http/Message/Uri');
+import Uri from "../Kernel/Http/Message/Uri";
 
 /**
  * Class Url
  * 
  * @package Helpers
  */
-class Url {
+export default class Url {
     constructor() {
         this.uri = new Uri();
         this.string = this.uri.__toString();
@@ -27,21 +27,23 @@ class Url {
     }
 
     base(segments, query) {
-        if(typeof uri === 'undefined') {
+        let uri = this.uri;
+        
+        if(typeof segments === 'undefined') {
             return this.string;
         } 
 
-        if(Array.isArray(uri)) {
-            this.uri.withSegments(segments);
+        if(Array.isArray(segments)) {
+            uri = this.uri.setSegments(segments);
         } else {
-            this.uri.withSegments(segments.split('/'));
+            uri = this.uri.setSegments(segments.split('/'));
         }
 
         if(query instanceof Object) {
-            this.uri.withQuery(query); 
+            uri = uri.setQuery(query); 
         }
 
-        return this.uri.__toString();
+        return uri.__toString();
     }
 
     current(query) {
@@ -51,6 +53,10 @@ class Url {
 
         return this.uri.__toString();
     }
-}
 
-module.exports = Url;
+    redirect(segments, query) {
+        let href = this.base(segments, query);
+
+        window.location.href = href;
+    }
+}

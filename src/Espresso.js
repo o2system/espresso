@@ -14,12 +14,15 @@ import EventListener from './Html/EventListener';
 import Input from './Kernel/Input';
 import ServerRequest from './Kernel/Http/Message/ServerRequest';
 
+// Helpers
+import Url from './Helpers/Url';
+
 // ------------------------------------------------------------------------
 
 /**
  * Class Espresso
  */
-class Espresso {
+export default class Espresso {
     constructor() {
         this.listener = new EventListener();
         this.input = new Input();
@@ -31,7 +34,9 @@ class Espresso {
         this.listener.loadPage('a[data-action="load-page"]');
         this.listener.loadData('a[data-action="load-data"]');
         this.listener.loadFrame('a[data-action="load-frame"]');
+        
+        this.helpers = {
+            url: new Url()
+        }
     }
 }
-
-export default Espresso;

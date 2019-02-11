@@ -14,32 +14,74 @@
  * 
  * @package Kernel/Http/Message/Uri
  */
-class Segments {
+export default class Segments {
     constructor() {
         this.string = window.location.pathname.substr(1);
         this.parts = this.string.split('/');
+    }
+
+    setString(string) {
+        this.string = string;
+
+        return this;
     }
 
     getString() {
         return this.string;
     }
 
+    addString(string) {
+        if(typeof string == "string") {
+            this.string = this.string + string;
+            this.parts = this.string.split('/');
+        }
+
+        return this;
+    }
+
     withString(string) {
-        this.string = string;
+        let segments = new Segments();
+
+        if(typeof string == "string") {
+            segments.string = string;
+        }
+
+        return segments;
     }
 
     getParts() {
         return this.parts;
     }
 
-    withParts(parts) {
+    setParts(parts) {
         if(Array.isArray(parts)) {
-            this.parts.concat(parts);
+            this.parts = parts;
+            this.string = parts.join('/');
         }
+
+        return this;
     }
 
-    setParts(parts) {
-        this.parts = parts;
+    getParts() {
+        return this.parts;
+    }
+
+    addParts(parts) {
+        if(Array.isArray(parts)) {
+            this.parts.concat(parts);
+            this.string = this.parts.join('/');
+        }
+
+        return this;
+    }
+
+    withParts(parts) {
+        let segments = new Segments();
+
+        if(Array.isArray(parts)) {
+            segments.parts = parts;
+            segments.string = parts.join('/');
+        }
     }
 
     getPart(index) {
@@ -50,8 +92,20 @@ class Segments {
         return null;
     }
 
+    addPart(part) {
+        if(typeof part != "undefined") {
+            this.parts.push(part);
+            this.string = this.parts.join('/');
+        }
+        
+        return this;
+    }
+
     withPart(part) {
-        this.parts.push(part);
+        let segments = new Segments();
+        segments.addPart(part);
+        
+        return segments;
     }
 
     hasPart(part) {
@@ -68,17 +122,15 @@ class Segments {
         return part.replace(/[\W_-]/g, '').replace(/_+/g, '-').replace(/-+/g, '-');
     }
 
-    getTotalParts() {
+    getNumOfParts() {
         return this.parts.length;
     }
 
     __toString() {
         if(this.parts.length > 0) {
-            return this.parts.join('/');
+            return '/' + this.parts.join('/');
         }
 
         return '';
     }
 }
-
-export default Segments;
