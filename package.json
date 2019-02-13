@@ -46,6 +46,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "mustache": "^3.0.1"
+    "template7": "^1.4.1"
   }
 }
