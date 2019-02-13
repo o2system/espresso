@@ -137,13 +137,16 @@ export default class EventListener {
                 if(element.hasAttribute('data-args')) {
                     functionArgs = JSON.parse(element.getAttribute('data-args'));
                 }
-                
-                let functionNamespace = functionName.split(".");
-                let functionCallName = functionNamespace.pop();
-                for (let i = 0; i < functionNamespace.length; i++) {
-                    context = context[functionNamespace[i]];
+
+                let functionCallback = window[functionName];
+
+                if(typeof functionCallback == "function") {
+                    if(Array.isArray(functionArgs)) {
+                        functionCallback.apply(functionArgs);
+                    } else {
+                        functionCallback();
+                    }
                 }
-                return context[functionCallName].apply(context, functionArgs);
             });
         }
     }
