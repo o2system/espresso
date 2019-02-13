@@ -39,6 +39,7 @@ export default class Espresso {
         this.listener.loadPage('a[data-action="load-page"]');
         this.listener.loadData('a[data-action="load-data"]');
         this.listener.loadFrame('a[data-action="load-frame"]');
+        this.listener.onloadCallback('[onload]');
         
         this.helpers = {
             url: new Url()

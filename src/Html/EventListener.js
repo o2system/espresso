@@ -125,4 +125,26 @@ export default class EventListener {
             });
         }
     }
+
+    onloadCallback(selector) {
+        const elements = document.querySelectorAll(selector);
+
+        if (elements.length > 0) {
+            elements.forEach(function (element) {
+                let functionName = element.getAttribute('onload');
+                let functionArgs = null;
+
+                if(element.hasAttribute('data-args')) {
+                    functionArgs = JSON.parse(element.getAttribute('data-args'));
+                }
+                
+                let functionNamespace = functionName.split(".");
+                let functionCallName = functionNamespace.pop();
+                for (let i = 0; i < functionNamespace.length; i++) {
+                    context = context[functionNamespace[i]];
+                }
+                return context[functionCallName].apply(context, functionArgs);
+            });
+        }
+    }
 }

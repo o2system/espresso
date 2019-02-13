@@ -40,11 +40,12 @@
     "webpack": "^4.28.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-middleware": "^3.5.0",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "mustache": "^3.0.1"
   }
 }
