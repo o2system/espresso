@@ -44,4 +44,8 @@ export default class Espresso {
             url: new Url()
         }
     }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }
