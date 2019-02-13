@@ -10,11 +10,15 @@
  */
 // ------------------------------------------------------------------------
 
-import EventListener from './Html/EventListener';
+// Kernel Helpers
 import Input from './Kernel/Input';
 import ServerRequest from './Kernel/Http/Message/ServerRequest';
 
-// Helpers
+// Html Helpers
+import EventListener from './Html/EventListener';
+import View from './Html/View';
+
+// Common Helpers
 import Url from './Helpers/Url';
 
 // ------------------------------------------------------------------------
@@ -24,9 +28,10 @@ import Url from './Helpers/Url';
  */
 export default class Espresso {
     constructor() {
-        this.listener = new EventListener();
         this.input = new Input();
         this.serverRequest = new ServerRequest();
+        this.listener = new EventListener();
+        this.view = new View();
 
         /**
          * Initialize EventListener

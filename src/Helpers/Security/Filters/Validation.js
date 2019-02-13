@@ -12,7 +12,7 @@
 /**
  * Class Validation
  * 
- * @package Security/Filters
+ * @package Helpers/Security/Filters
  */
 export default class Validation {
     url(string) {
