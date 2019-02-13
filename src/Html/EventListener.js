@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------
 
 import Request from '../Kernel/Http/Request';
-import Mustache from 'mustache';
+import Parser from 'template7';
 
 /**
  * Class EventListener
@@ -99,7 +99,8 @@ export default class EventListener {
 
                                         if (dataSource) {
                                             if (!dataSourceTemplate) {
-                                                dataSource.innerHTML = Mustache.render(dataSource.innerText, dataJSON.result[0]);
+                                                let compiler = Parser.compile(dataSource.innerText);
+                                                dataSource.innerHTML = compiler(dataJSON.result[0]);
                                             } else {
                                                 dataJSON.result.forEach(function (itemData, itemIndex) {
                                                     let itemTemplate = dataSourceTemplate.cloneNode(true);
@@ -108,7 +109,8 @@ export default class EventListener {
                                                         itemTemplate.setAttribute('data-index', itemIndex);
                                                         itemTemplate.removeAttribute('role');
                                                         itemTemplate.style.display = 'block';
-                                                        itemTemplate.innerHTML = Mustache.render(itemTemplate.innerText, itemData);
+                                                        let compiler = Parser.compile(itemTemplate.innerText);
+                                                        itemTemplate.innerHTML = compiler(itemData);
                                                         dataSource.appendChild(itemTemplate);
                                                     }
                                                 });
