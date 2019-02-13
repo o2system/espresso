@@ -18,11 +18,15 @@ import Mustache from 'mustache';
  * @package Html
  */
 export default class EventListener {
+    constructor() {
+        this.callbacks = new Object();
+    }
+
     loadFrame(selectors) {
         const buttons = document.querySelectorAll(selectors);
 
         if (buttons.length > 0) {
-            buttons.forEach(function(button){
+            buttons.forEach(function (button) {
                 button.addEventListener('click', (element) => {
                     element.preventDefault();
 
@@ -37,9 +41,9 @@ export default class EventListener {
 
     loadPage(selectors) {
         const buttons = document.querySelectorAll(selectors);
-        
-        if(buttons.length > 0) {
-            buttons.forEach(function(button){
+
+        if (buttons.length > 0) {
+            buttons.forEach(function (button) {
                 button.addEventListener('click', (element) => {
                     element.preventDefault();
 
@@ -66,8 +70,8 @@ export default class EventListener {
 
     loadData(selectors) {
         const templateElements = document.querySelectorAll('[role="template"]');
-        if(templateElements.length > 0) {
-            templateElements.forEach(function(templateElement){
+        if (templateElements.length > 0) {
+            templateElements.forEach(function (templateElement) {
                 templateElement.style.display = 'none';
             });
         }
@@ -75,7 +79,7 @@ export default class EventListener {
         const buttons = document.querySelectorAll(selectors);
 
         if (buttons.length > 0) {
-            buttons.forEach(function(button){
+            buttons.forEach(function (button) {
                 button.addEventListener('click', (element) => {
                     element.preventDefault();
                     const dataUrl = element.target.getAttribute('data-url');
@@ -100,7 +104,7 @@ export default class EventListener {
                                                 dataJSON.result.forEach(function (itemData, itemIndex) {
                                                     let itemTemplate = dataSourceTemplate.cloneNode(true);
                                                     itemExists = dataSource.querySelector('[data-index="' + itemIndex + '"]');
-                                                    if ( ! itemExists) {
+                                                    if (!itemExists) {
                                                         itemTemplate.setAttribute('data-index', itemIndex);
                                                         itemTemplate.removeAttribute('role');
                                                         itemTemplate.style.display = 'block';
@@ -126,22 +130,22 @@ export default class EventListener {
         }
     }
 
-    onloadCallback(selector) {
+    listenFunctioCalls(selector) {
         const elements = document.querySelectorAll(selector);
 
         if (elements.length > 0) {
             elements.forEach(function (element) {
-                let functionName = element.getAttribute('onload');
+                let functionName = element.getAttribute(selector);
                 let functionArgs = null;
 
-                if(element.hasAttribute('data-args')) {
+                if (element.hasAttribute('data-args')) {
                     functionArgs = JSON.parse(element.getAttribute('data-args'));
                 }
 
-                let functionCallback = window[functionName];
+                let functionCallback = this.callbacks[functionName];
 
-                if(typeof functionCallback == "function") {
-                    if(Array.isArray(functionArgs)) {
+                if (typeof functionCallback == "function") {
+                    if (Array.isArray(functionArgs)) {
                         functionCallback.apply(functionArgs);
                     } else {
                         functionCallback();

@@ -30,17 +30,16 @@ export default class Espresso {
     constructor() {
         this.input = new Input();
         this.serverRequest = new ServerRequest();
-        this.listener = new EventListener();
+        this.eventListener = new EventListener();
         this.view = new View();
 
         /**
          * Initialize EventListener
          */
-        this.listener.loadPage('a[data-action="load-page"]');
-        this.listener.loadData('a[data-action="load-data"]');
-        this.listener.loadFrame('a[data-action="load-frame"]');
-        this.listener.onloadCallback('[onload]');
-        
+        this.eventListener.loadPage('a[data-action="load-page"]');
+        this.eventListener.loadData('a[data-action="load-data"]');
+        this.eventListener.loadFrame('a[data-action="load-frame"]');
+
         this.helpers = {
             url: new Url()
         }
