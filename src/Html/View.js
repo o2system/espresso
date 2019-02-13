@@ -9,7 +9,7 @@
  */
 // ------------------------------------------------------------------------
 
-import Mustache from "mustache";
+import Parser from "template7";
 
 /**
  * Class View
@@ -51,42 +51,16 @@ export default class View {
     // ------------------------------------------------------------------------
 
     /**
-     * View.withPartial
-     * 
-     * @param string name 
-     * @param string template 
-     * 
-     * @return View
-     */
-    withPartial(name, template) {
-        if(typeof this.partials == "undefined") {
-            this.partials = new Object();
-        }
-
-        if(typeof template == "string") {
-            this.partials[name] = template;
-        }
-        
-        return this;
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-     * View.__toString
+     * View.render
      * 
      * @return string
      */
-    __toString() {
+    render() {
         let output = "";
 
-        if(typeof this.template == "string" && Array.isArray(this.vars)) {
-            if (this.partials instanceof Object) {
-                output = Mustache.to_html(this.template, this.vars, this.partials);
-                delete this.partials;
-            } else {
-                output = Mustache.to_html(this.template, this.vars);
-            }
+        if(typeof this.template == "string" && this.vars instanceof Object) {
+            let compiler = Parser.compile(this.template);
+            output = compiler(this.vars);
         }
 
         delete this.template;
