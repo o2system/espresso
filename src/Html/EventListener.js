@@ -130,19 +130,20 @@ export default class EventListener {
         }
     }
 
-    listenFunctioCalls(selector) {
-        const elements = document.querySelectorAll(selector);
+    listenOnloadFunctionCalls() {
+        const elements = document.querySelectorAll('[onload]');
+        const callbacks = this.callbacks;
 
         if (elements.length > 0) {
             elements.forEach(function (element) {
-                let functionName = element.getAttribute(selector);
+                let functionName = element.getAttribute('onload');
                 let functionArgs = null;
 
                 if (element.hasAttribute('data-args')) {
                     functionArgs = JSON.parse(element.getAttribute('data-args'));
                 }
 
-                let functionCallback = this.callbacks[functionName];
+                const functionCallback = callbacks[functionName];
 
                 if (typeof functionCallback == "function") {
                     if (Array.isArray(functionArgs)) {
