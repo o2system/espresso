@@ -11,10 +11,10 @@
 		<h1>Espresso</h1>
 	</div>
 
-	<a href="http://o2system.id" data-action="load-page">O2System</a>
-	<a href="http://o2system.id" data-action="load-frame">Github</a>
+	<a href="http://o2system5.local" data-action="load-page">O2System</a>
+	<a href="http://o2system5.local" data-action="load-iframe">Github</a>
 <a href="javascript:void(0);" data-action="load-data" data-url="http://api.o2system5.local" data-target="testingSingle">Single</a>
-<a href="javascript:void(0);" data-action="load-data" data-url="http://api.o2system5.local" data-target="testingLoop">Loop</a>
+<a href="javascript:void(0);" data-action="load-data" data-url="http://api.o2system5.local/service/loop" data-target="testingLoop">Loop</a>
 	<section role="page-content">
 
 	</section>
@@ -26,9 +26,11 @@
 	</div>
 
 	<ul data-source="testingLoop">
-		<li role="template">
-			<span>{{test}}</span>
-		</li>
+		<template>
+			<li>
+				<span>{{name}} - {{role}}</span>
+			</li>
+		</template>
 	</ul>
 </body>
 </html>

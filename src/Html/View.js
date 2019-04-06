@@ -9,7 +9,8 @@
  */
 // ------------------------------------------------------------------------
 
-import Parser from "template7";
+import ActionLoader from "./ActionLoader";
+import Parser from "./Parser";
 
 /**
  * Class View
@@ -17,6 +18,15 @@ import Parser from "template7";
  * @package Html
  */
 export default class View {
+
+    /**
+     * View.constructor
+     */
+    constructor(){
+        this.actionLoader = new ActionLoader;
+    }
+
+    // ------------------------------------------------------------------------
     
     /**
      * View.loadTemplate
@@ -56,16 +66,6 @@ export default class View {
      * @return string
      */
     render() {
-        let output = "";
-
-        if(typeof this.template == "string" && this.vars instanceof Object) {
-            let compiler = Parser.compile(this.template);
-            output = compiler(this.vars);
-        }
-
-        delete this.template;
-        delete this.vars;
-
-        return output;
+        return Parser.parse(this.template, this.vars);
     }
 }

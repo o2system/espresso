@@ -1,6 +1,6 @@
 // require("@babel/runtime");
 // require("@babel/register");
-require("webpack-hot-middleware/client?reload=true");
+//require("webpack-hot-middleware/client?reload=true");
 require("./style.css");
 require("./index.html");
 

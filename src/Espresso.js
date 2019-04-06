@@ -15,7 +15,6 @@ import Input from './Kernel/Input';
 import ServerRequest from './Kernel/Http/Message/ServerRequest';
 
 // Html Helpers
-import EventListener from './Html/EventListener';
 import View from './Html/View';
 
 // Common Helpers
@@ -30,15 +29,7 @@ export default class Espresso {
     constructor() {
         this.input = new Input();
         this.serverRequest = new ServerRequest();
-        this.eventListener = new EventListener();
         this.view = new View();
-
-        /**
-         * Initialize EventListener
-         */
-        this.eventListener.loadPage('a[data-action="load-page"]');
-        this.eventListener.loadData('a[data-action="load-data"]');
-        this.eventListener.loadFrame('a[data-action="load-frame"]');
 
         this.helpers = {
             url: new Url()
